@@ -26,11 +26,20 @@ BLACK = (0, 0, 0)
 WHITE=(255, 255, 255)
 RED=(255,0,0)
 
-#set up the frame rate
+# set up the frame rate
 FRAMERATE = 60
 
+def get_image(image):
+    return ".\\Resources\\Images\\" + image
+
+def get_sound(sound):
+    return ".\\Resources\Sounds\\" + sound
+
+def get_font(font):
+    return ".\\Resources\Fonts\\" + font
+
 #set up global button click sound
-CLICKSOUND = pygame.mixer.Sound('button click.wav')
+CLICKSOUND = pygame.mixer.Sound(get_sound('button click.wav'))
 
 def terminate():
     """ This function is called when the user closes the window or presses ESC """
@@ -47,12 +56,12 @@ def game_intro(windowSurface):
     """ The game menu page that allows user
         to view instructions or start the game"""
     
-    startbuttonpic1,startbuttonrect=load_image('button_start.png')  #non-hover button pic
-    startbuttonpic2=pygame.image.load('button_start2.png')          #hover button pic
+    startbuttonpic1,startbuttonrect=load_image(get_image('button_start.png'))  #non-hover button pic
+    startbuttonpic2=pygame.image.load(get_image('button_start2.png'))          #hover button pic
     startbuttonrect.midtop=(WINDOWWIDTH/2,330)
     
-    instructbuttonpic1,instructbuttonrect=load_image('button_instructions.png') #non-hover button pic
-    instructbuttonpic2=pygame.image.load('button_instructions2.png')            #hover button pic
+    instructbuttonpic1,instructbuttonrect=load_image(get_image('button_instructions.png')) #non-hover button pic
+    instructbuttonpic2=pygame.image.load(get_image('button_instructions2.png'))            #hover button pic
     instructbuttonrect.midtop=(WINDOWWIDTH/2,420)
     
     # a list of button pics used for hover effect
@@ -62,7 +71,7 @@ def game_intro(windowSurface):
     buttons=[[startbuttonpic1,startbuttonrect],
              [instructbuttonpic1,instructbuttonrect]]
     
-    coverpic,coverrect=load_image('cover.png')
+    coverpic,coverrect=load_image(get_image('cover.png'))
     
     while True:
         windowSurface.blit(coverpic,coverrect)
@@ -97,9 +106,9 @@ def game_intro(windowSurface):
 
 def instructions(windowSurface):
     """ The instructions page """
-    drawPic('instructions page.jpg',windowSurface,WINDOWWIDTH/2,WINDOWHEIGHT/2)
-    backbuttonpic1,backbuttonrect=load_image('button_back-to-menu.png') #non-hover button pic
-    backbuttonpic2=pygame.image.load('button_back-to-menu 2.png')       #hover button pic
+    drawPic(get_image('instructions page.jpg'),windowSurface,WINDOWWIDTH/2,WINDOWHEIGHT/2)
+    backbuttonpic1,backbuttonrect=load_image(get_image('button_back-to-menu.png')) #non-hover button pic
+    backbuttonpic2=pygame.image.load(get_image('button_back-to-menu 2.png'))       #hover button pic
     backbuttonrect.midtop=(130,30)
     buttonpics=[backbuttonpic1,backbuttonpic2]
     buttons=[backbuttonpic1,backbuttonrect]
@@ -126,22 +135,22 @@ def instructions(windowSurface):
 
 def choose_character(windowSurface, name):
     """ Allows the user to choose their own chracter"""
-    Font = pygame.font.Font("Arcade N.ttf", 20)
+    Font = pygame.font.Font(get_font("Arcade N.ttf"), 20)
     # a list of dictionaries containing charater profile image, spritesheet, and full body picture
-    characters=[{'profile':'profile1.png','sprite':'charasprite1.png','body':pygame.image.load('chara1.png')},
-                {'profile':'profile2.png','sprite':'charasprite2.png','body':pygame.image.load('chara2.png')},
-                {'profile':'profile3.jpg','sprite':'charasprite3.png','body':pygame.image.load('chara3.png')},
-                {'profile':'profile4.jpg','sprite':'charasprite4.png','body':pygame.image.load('chara4.png')},
-                {'profile':'profile5.jpg','sprite':'charasprite5.png','body':pygame.image.load('chara5.png')},
-                {'profile':'profile6.png','sprite':'charasprite6.png','body':pygame.image.load('chara6.png')},
-                {'profile':'profile7.png','sprite':'charasprite7.png','body':pygame.image.load('chara7.png')},
-                {'profile':'profile8.jpg','sprite':'charasprite8.png','body':pygame.image.load('chara8.png')},
-                {'profile':'profile9.jpg','sprite':'charasprite9.png','body':pygame.image.load('chara9.png')},
-                {'profile':'profile10.jpg','sprite':'charasprite10.png','body':pygame.image.load('chara10.png')},
-                {'profile':'profile11.jpg','sprite':'charasprite11.png','body':pygame.image.load('chara11.png')},
-                {'profile':'profile12.png','sprite':'charasprite12.png','body':pygame.image.load('chara12.png')}]
-    background,bgrect=load_image('lab background.jpg')
-    transbg,transbgrect=load_image('translucent background.png')
+    characters=[{'profile':get_image('profile1.png'),'sprite':get_image('charasprite1.png'),'body':pygame.image.load(get_image('chara1.png'))},
+                {'profile':get_image('profile2.png'),'sprite':get_image('charasprite2.png'),'body':pygame.image.load(get_image('chara2.png'))},
+                {'profile':get_image('profile3.jpg'),'sprite':get_image('charasprite3.png'),'body':pygame.image.load(get_image('chara3.png'))},
+                {'profile':get_image('profile4.jpg'),'sprite':get_image('charasprite4.png'),'body':pygame.image.load(get_image('chara4.png'))},
+                {'profile':get_image('profile5.jpg'),'sprite':get_image('charasprite5.png'),'body':pygame.image.load(get_image('chara5.png'))},
+                {'profile':get_image('profile6.png'),'sprite':get_image('charasprite6.png'),'body':pygame.image.load(get_image('chara6.png'))},
+                {'profile':get_image('profile7.png'),'sprite':get_image('charasprite7.png'),'body':pygame.image.load(get_image('chara7.png'))},
+                {'profile':get_image('profile8.jpg'),'sprite':get_image('charasprite8.png'),'body':pygame.image.load(get_image('chara8.png'))},
+                {'profile':get_image('profile9.jpg'),'sprite':get_image('charasprite9.png'),'body':pygame.image.load(get_image('chara9.png'))},
+                {'profile':get_image('profile10.jpg'),'sprite':get_image('charasprite10.png'),'body':pygame.image.load(get_image('chara10.png'))},
+                {'profile':get_image('profile11.jpg'),'sprite':get_image('charasprite11.png'),'body':pygame.image.load(get_image('chara11.png'))},
+                {'profile':get_image('profile12.png'),'sprite':get_image('charasprite12.png'),'body':pygame.image.load(get_image('chara12.png'))}]
+    background,bgrect=load_image(get_image('lab background.jpg'))
+    transbg,transbgrect=load_image(get_image('translucent background.png'))
     rects=[]
     pics=[]
     body_midtop=900,100     #the location where the full body image will be displayed
@@ -171,7 +180,7 @@ def choose_character(windowSurface, name):
 
     #The default character will be the first character in characters list
     display=characters[0]['body']
-    select_border,selectrect=load_image('select border.png')
+    select_border,selectrect=load_image(get_image('select border.png'))
     selectrect.center=rects[0].centerx,rects[0].centery
     
     while True:
@@ -208,7 +217,7 @@ def choose_character(windowSurface, name):
 
 def choosetagger(windowSurface):
     """ Allows the user to choose the first tagger"""
-    Font = pygame.font.Font("Arcade N.ttf", 30)
+    Font = pygame.font.Font(get_font("Arcade N.ttf"), 30)
     player1text = Font.render("PLAYER 1", 1, WHITE)     #non-hover image
     subplayer1text = Font.render("PLAYER 1", 1, RED)    #hover image
     player2text = Font.render("PLAYER 2", 1, WHITE)     #non-hover image
@@ -268,8 +277,8 @@ def display_stats(windowSurface,stats,x,y,profile,left):
     """ Displays the player's statistics such as lives"""
     
     Font = pygame.font.Font(None, 30)
-    heartpic,heartrect=load_image('heart.png')
-    telepic,telerect=load_image('teleporter.png')
+    heartpic,heartrect=load_image(get_image('heart.png'))
+    telepic,telerect=load_image(get_image('teleporter.png'))
     profilepic,profilerect=load_image(profile)
     
     # player 1 stat will have left alignment
@@ -279,7 +288,7 @@ def display_stats(windowSurface,stats,x,y,profile,left):
     else:
         profilerect.topright=(x,y)
         
-    frame,framerect=load_image('profile frame.png')
+    frame,framerect=load_image(get_image('profile frame.png'))
     framerect.center=profilerect.centerx,profilerect.centery
 
     if left:
@@ -312,7 +321,7 @@ def display_stats(windowSurface,stats,x,y,profile,left):
 def game_over_page(windowSurface,winner):
     """ Displays the game over page with the winner's name displayed """
     windowSurface.fill(BLACK)
-    Font = pygame.font.Font("Arcade N.ttf", 50)
+    Font = pygame.font.Font(get_font("Arcade N.ttf"), 50)
     menutext = ['Game Over', winner+" wins","Press space to restart"]   #a list of game over message
     height = 300
     # Display the game over message
@@ -541,7 +550,7 @@ class Hourglass(pygame.sprite.Sprite):
     """ The hourglass animation showing the elapsed time of the tagger"""
     def __init__(self,x,y):
         pygame.sprite.Sprite.__init__(self)
-        self.frames=strip_from_sheet('hourglass.png',67,1)
+        self.frames=strip_from_sheet(get_image('hourglass.png'),67,1)
         self.image=self.frames[0]
         self.rect=self.image.get_rect()
         self.rect.midtop=(x,y)
@@ -562,7 +571,7 @@ class Speeder(pygame.sprite.Sprite):
     """ This item can increase the player's speed"""
     def __init__(self,mazelist):
         pygame.sprite.Sprite.__init__(self)
-        self.image, self.rect = load_image("speeder.png")
+        self.image, self.rect = load_image(get_image("speeder.png"))
         # Set the position to a randomly generated location
         self.rect.center=generatecoordinate(mazelist)
         self.starttime=time.time()  #the time placed will be used to determine when sprite disappears
@@ -572,7 +581,7 @@ class Clock(pygame.sprite.Sprite):
         depending on who gets it"""
     def __init__(self,mazelist):
         pygame.sprite.Sprite.__init__(self)
-        self.image, self.rect = load_image("clock.png")
+        self.image, self.rect = load_image(get_image("clock.png"))
         # Set the position to a randomly generated location
         self.rect.center=generatecoordinate(mazelist)
         self.starttime=time.time()  #the time placed will be used to determine when sprite disappears
@@ -581,7 +590,7 @@ class Teleporter(pygame.sprite.Sprite):
     """ This item allows the player to teleport"""
     def __init__(self,mazelist):
         pygame.sprite.Sprite.__init__(self)
-        self.image, self.rect = load_image("teleporter.png")
+        self.image, self.rect = load_image(get_image("teleporter.png"))
         # Set the position to a randomly generated location
         self.rect.center=generatecoordinate(mazelist)
         self.starttime=time.time()  #the time placed will be used to determine when sprite disappears
@@ -590,7 +599,7 @@ class Danger(pygame.sprite.Sprite):
     """ This cautions the user of upcoming lightning"""
     def __init__(self,mazelist):
         pygame.sprite.Sprite.__init__(self)
-        self.image, self.rect = load_image("danger.png")
+        self.image, self.rect = load_image(get_image("danger.png"))
         # Set the position to a randomly generated location
         self.rect.center=generatecoordinate(mazelist)
 
@@ -599,7 +608,7 @@ class Lightning(pygame.sprite.Sprite):
         player's live will decrease by one"""
     def __init__(self,x,y):
         pygame.sprite.Sprite.__init__(self)
-        self.lights=strip_from_sheet('lightning.png',2,2)
+        self.lights=strip_from_sheet(get_image('lightning.png'),2,2)
         self.rect=self.lights[0].get_rect()
         self.starttime=time.time()
         self.rect.centerx=x
@@ -665,9 +674,9 @@ class Maze(pygame.sprite.Sprite):
             for y in range(len(self.mazelist[0])):
                 
                 if self.mazelist[x][y]=='#':
-                    self.walls.add(tile('block 2.png',row,col))
+                    self.walls.add(tile(get_image('block 2.png'),row,col))
                 else:
-                    self.floors.add(tile('floor.png',row,col))
+                    self.floors.add(tile(get_image('floor.png'),row,col))
                 row+=BLOCKWIDTH
             col+=BLOCKHEIGHT
             row=MAZELEFT
@@ -724,12 +733,12 @@ class Game():
         self.adddanger=True
 
         # Set up music
-        pygame.mixer.music.load('theme music.mp3')
-        self.beginning_count_down_sound=pygame.mixer.Sound('countdown.wav')
-        self.pickUpSound = pygame.mixer.Sound('pickup.wav')
-        self.thundersound=pygame.mixer.Sound('biu.wav')
-        self.switchbell=pygame.mixer.Sound('Bell.wav')
-        self.GameOverSound=pygame.mixer.Sound('game over.wav')
+        pygame.mixer.music.load(get_sound('theme music.mp3'))
+        self.beginning_count_down_sound=pygame.mixer.Sound(get_sound('countdown.wav'))
+        self.pickUpSound = pygame.mixer.Sound(get_sound('pickup.wav'))
+        self.thundersound=pygame.mixer.Sound(get_sound('biu.wav'))
+        self.switchbell=pygame.mixer.Sound(get_sound('Bell.wav'))
+        self.GameOverSound=pygame.mixer.Sound(get_sound('game over.wav'))
         
 
         # set up the music boolean varibles
@@ -739,7 +748,7 @@ class Game():
         self.settingbuttons()
 
         # Set up the font used to display text such as the time remaining
-        self.Font = pygame.font.Font("Arcade N.ttf", 15)
+        self.Font = pygame.font.Font(get_font("Arcade N.ttf"), 15)
 
         self.firsttime=True     #This variable is only true in the beginning of game for countdown
         self.startgametime=time.time()  #time when game starts
@@ -747,9 +756,9 @@ class Game():
 
     def settingbuttons(self):
         """ The buttons on the game that is able to change the settings """
-        self.playmusicbutton,self.musicrect=load_image('music button.png')
+        self.playmusicbutton,self.musicrect=load_image(get_image('music button.png'))
         self.musicrect.centerx,self.musicrect.centery=1130,35
-        self.mutebutton=pygame.image.load('mute button.png')
+        self.mutebutton=pygame.image.load(get_image('mute button.png'))
         self.musicbutton=self.playmusicbutton   #default is playing music, so default button is playmusicbutton
 
     def countdown(self,windowSurface):
@@ -757,10 +766,10 @@ class Game():
         # The countdown will only occur one time in the start of the game
         if self.firsttime:
             self.beginning_count_down_sound.play()
-            num3,num3rect=load_image('3.png')
-            num2,num2rect=load_image('2.png')
-            num1,num1rect=load_image('1.png')
-            go,gorect=load_image('go.png')
+            num3,num3rect=load_image(get_image('3.png'))
+            num2,num2rect=load_image(get_image('2.png'))
+            num1,num1rect=load_image(get_image('1.png'))
+            go,gorect=load_image(get_image('go.png'))
             piclist=[num3,num2,num1,go]
             rectlist=[num3rect,num2rect,num1rect,gorect]
             
