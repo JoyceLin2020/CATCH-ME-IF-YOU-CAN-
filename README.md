@@ -4,7 +4,7 @@ The game file is Final game 1.py
 Must install PyGame in order to run the game.
 
 # Demo
-![](Catch%20Me%20If%20You%20Can!%20Demo.mp4)
+https://user-images.githubusercontent.com/59811810/149374630-e894bf6b-745e-4a6d-80a4-e5129ec567c1.mp4
 
 # Instruction
 ![](Images/Instructions.png)
