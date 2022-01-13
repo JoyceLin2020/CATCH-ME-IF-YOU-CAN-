@@ -3,6 +3,9 @@ An original two-player game written using Python (PyGame).
 The game file is Final game 1.py  
 Must install PyGame in order to run the game.
 
+# Demo
+![](Catch%20Me%20If%20You%20Can!%20Demo.mp4)
+
 # Instruction
 ![](Images/Instructions.png)
 
